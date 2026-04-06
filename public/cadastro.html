@@ -59,23 +59,28 @@
           </div>
           <div class="campo">
             <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
+            <input id="nome_input" type="text" placeholder="Seu nome" oninput="validacaoNome()" />
+            <p id="pNome"></p>
           </div>
           <div class="campo">
             <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+            <input id="email_input" type="text" placeholder="meuemail@provedor.com" oninput="validacaoEmail()" />
+            <p id="pEmail"></p>
           </div>
           <div class="campo">
             <span>CPF</span>
-            <input id="cpf_input" type="text" placeholder="123.123.123-12" />
+            <input id="cpf_input" type="text" placeholder="123.123.123-12" oninput="validacaoCPF()" />
+            <p id="pCPF"></p>
           </div>
           <div class="campo">
             <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
+            <input id="senha_input" type="password" placeholder="******" oninput="validacaoSenha()" />
+            <p id="pSenha"></p>
           </div>
           <div class="campo">
             <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            <input id="confirmacao_senha_input" type="password" placeholder="******" oninput="validacaoConfirmacao()" />
+            <p id="pConfirmacao"></p>
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
@@ -87,6 +92,111 @@
       </div>
     </div>
   </div>
+
+
+  <script>
+    function validacaoNome() {
+
+      let nome = nome_input.value;
+
+      if (nome.length <= 1) {
+        pNome.innerHTML = `Nome deve conter mais de 1 caractere`
+      } else {
+        pNome.innerHTML = ``
+
+      }
+
+    }
+
+    function validacaoEmail() {
+
+      let email = email_input.value;
+
+      if (!email.includes('@') || !email.includes('.')) {
+        pEmail.innerHTML = `Email deve conter @ e .`
+      } else {
+        pEmail.innerHTML = ``
+      }
+    }
+
+
+
+
+    function validacaoSenha() {
+
+      let senha = senha_input.value;
+
+      if (!(senha.length > 6)) {
+        pSenha.innerHTML = `Senha deve conter mais de 6 caracteres`
+      } else {
+        pSenha.innerHTML = ``
+      }
+    }
+
+    function validacaoConfirmacao() {
+
+      let senha = senha_input.value;
+      let confirmacao = confirmacao_senha_input.value;
+
+      if (senha != confirmacao) {
+        pConfirmacao.innerHTML = `Senhas não se coincidem!`
+      } else {
+        pConfirmacao.innerHTML = ``
+      }
+    }
+
+    function validacaoCPF() {
+
+      let cpf = cpf_input.value;
+
+      if (!(cpf.length == 11)) {
+        pCPF.innerHTML = `Tamanho invalido de CPF`
+      } else {
+        pCPF.innerHTML = ``
+      }
+    }
+
+    // function validacaoEmail() {
+
+    //   let nome = nome_input.value;
+    //   let email = email_input.value;
+    //   let cpf = cpf_input.value;
+    //   let senha = senha_input.value;
+    //   let confirmacao = confirmacao_senha_input.value;
+
+    //   if (nome.length <= 1) {
+    //     pNome.innerHTML = `Nome deve conter mais de 1 caractere`
+    //   } else {
+    //     pNome.innerHTML = ``
+
+    //   }
+
+    //   if (!email.includes('@') || !email.includes('.')) {
+    //     pEmail.innerHTML = `Email deve conter @ e .`
+    //   } else {
+    //     pEmail.innerHTML = ``
+    //   }
+
+    //   if (!(cpf.length == 11)) {
+    //     pCPF.innerHTML = `Tamanho invalido de CPF`
+    //   } else {
+    //     pCPF.innerHTML = ``
+    //   }
+
+    //   if (!(senha.length > 6)) {
+    //     pSenha.innerHTML = `Senha deve conter mais de 6 caracteres`
+    //   } else {
+    //     pSenha.innerHTML = ``
+    //   }
+
+    //   if (senha != confirmacao) {
+    //     pConfirmacao.innerHTML = `Senhas não se coincidem!`
+    //   } else {
+    //     pConfirmacao.innerHTML = ``
+    //   }
+    // }
+
+  </script>
 
   <!--footer inicio-->
   <div class="footer">
